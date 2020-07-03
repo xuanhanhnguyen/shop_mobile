@@ -51,7 +51,7 @@ class ProductController extends Controller
         }
         $data = collect($request->all())->merge([
             'hinh_anh' => $request->hasFile('hinh_anh') ? $image : null,
-            'thong_so' => $request->man_hinh . ',' . $request->hdh . ';' . $request->c_sau . ';' . $request->c_truoc . ';' . $request->cpu . ';' . $request->ram . ';' . $request->store . ';' . $request->the_nho . ';' . $request->sim . ';' . $request->pin,
+            'thong_so' => $request->man_hinh . ';' . $request->hdh . ';' . $request->c_sau . ';' . $request->c_truoc . ';' . $request->cpu . ';' . $request->ram . ';' . $request->store . ';' . $request->the_nho . ';' . $request->sim . ';' . $request->pin,
         ])->toArray();
         san_pham::create($data);
 

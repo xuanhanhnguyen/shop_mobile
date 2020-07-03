@@ -16,6 +16,10 @@ class hoa_don extends Model
         return $this->belongsTo('App\khach_hang', 'khach_hang_id', 'id');
     }
 
+    public function cthd()
+    {
+        return $this->hasMany(cthd::class, 'hoa_don_id', 'id');
+    }
 
     public function user()
     {

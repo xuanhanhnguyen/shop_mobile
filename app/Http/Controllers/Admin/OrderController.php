@@ -113,8 +113,7 @@ class OrderController extends Controller
     {
         $hd = hoa_don::find($id);
         try {
-            $sp = san_pham::find($hd->san_pham_id);
-            $sp->update(['so_luong' => $sp->so_luong + $hd->sl_mua]);
+            $hd->cthd()->delete();
             $hd->delete();
             return redirect('admin/order')->with("message", "Xóa thành công!");
         } catch (\Exception $e) {
