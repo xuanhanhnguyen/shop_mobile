@@ -35,7 +35,6 @@
                                     }
                                 });
                                 $.post('/cart', {id: id}, function (data) {
-                                    console.log(data);
                                     if (data == 1) {
                                         alert("Đã thêm vào giỏ hàng!");
                                     } else {

@@ -144,21 +144,21 @@
                 </div>
                 <div class="form-group m-0">
                     <label for="title">Họ & tên:</label>
-                    <input type="text" class="form-control m-0" name="name" required="">
+                    <input type="text" class="form-control m-0" name="_name" required="">
                 </div>
                 <div class="row">
                     <div class="form-group m-0 col-md-6">
                         <label for="title">Email:</label>
-                        <input type="email" class="form-control m-0" name="email" required="">
+                        <input type="email" class="form-control m-0" name="_email" required="">
                     </div>
                     <div class="form-group m-0 col-md-6">
                         <label for="title">Điện thoại:</label>
-                        <input type="number" class="form-control m-0" name="phone" required="">
+                        <input type="number" class="form-control m-0" name="_phone" required="">
                     </div>
                 </div>
                 <div class="form-group m-0">
                     <label for="title">Địa chỉ:</label>
-                    <input type="text" class="form-control m-0" name="address" required="">
+                    <input type="text" class="form-control m-0" name="_address" required="">
                 </div>
 
                 <div class="col-12 text-center mt-3">
