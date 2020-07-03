@@ -17,7 +17,7 @@ class PageController extends Controller
         if (isset(\request()->search) || isset(\request()->cat)) {
             $san_pham = san_pham::where('ten_sp', 'like', '%' . \request()->search . '%')->paginate(12);
             if (isset(\request()->cat)) {
-                $san_pham = san_pham::where('ten_sp', 'like', '%' . \request()->search . '%')->where('loai_id', \request()->cat)->paginate(12);
+                $san_pham = san_pham::where('loai_id', \request()->cat)->paginate(12);
             }
         } else {
             $san_pham = san_pham::paginate(12);
