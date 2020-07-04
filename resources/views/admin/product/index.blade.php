@@ -39,6 +39,7 @@
                 <th>Tên sản phẩm</th>
                 <th style="width: 100px">Hình ảnh</th>
                 <th>Thông tin</th>
+                <th>Thành tiền</th>
                 <th>Trạng thái</th>
                 <th>
                     <button class="btn btn-sm btn-success"
@@ -66,6 +67,9 @@
                                 <i class="far fa-star text-warning"></i>
                             @endfor
                         </p>
+                    </td>
+                    <td>
+                        {{_manny(($val->gia - $val->gia * $val->sale / 100)."")}}VNĐ
                     </td>
                     <td>
                         <form action="{{$val->id}}" method="POST">
