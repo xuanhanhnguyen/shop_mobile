@@ -17,5 +17,36 @@ a.nav-link > i {
 }
 
 .callout-top.callout-top-danger {
-    border-top-color: #007bff;
+    border-top-color: #dc3545 !important;
+}
+
+.bg-primary {
+    background-color: #dc3545 !important;
+}
+
+.btn-success {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+}
+
+.btn-outline-danger {
+    color: #fff;
+    background-color: #dc3545 !important;
+}
+
+.btn-outline-success {
+    color: #fff;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+    background-color: #dc3545 !important;
 }

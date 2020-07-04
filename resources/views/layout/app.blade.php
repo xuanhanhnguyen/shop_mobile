@@ -85,6 +85,7 @@
     }
 
     var obj = [];
+    var ttien = 0;
 
     function getCart() {
         $.get('/cart', function (data) {
@@ -97,12 +98,13 @@
                 '    <div class="col-md-3"><p>Số lượng</p></div>\n' +
                 '    <div class="col-md-3"><p>Thành tiền</p></div>\n' +
                 '</div>';
-            var ttien = 0;
             var sl_mua = 0;
+            ttien = 0;
+            obj = [];
             data.map(v => {
-                sl_mua = $('#item-' + v.id).val() ? $('#item-' + v.id).val() : 1;
+                sl_mua = $('#item-' + v.id).val() > 0 ? $('#item-' + v.id).val() : 1;
                 ttien += v.gia * sl_mua;
-                obj = [...obj, {...v, sl_mua: sl_mua}];
+                obj = [...obj, {...v, sl_mua: sl_mua, don_gia: v.gia * sl_mua}];
                 str += '<div class="row text-center">\n' +
                     '    <div class="col-md-3">\n' +
                     '        <img class="w-100" style="height: 50px" src="/uploads/product/' + v.hinh_anh + '" alt="ảnh">\n' +
@@ -111,7 +113,7 @@
                     '        <p class="text-danger">' + v.ten_sp + '</p>\n' +
                     '    </div>\n' +
                     '    <div class="col-md-3">\n' +
-                    '        <input class="form-control" id="item-' + v.id + '" type="number" value="1">\n' +
+                    '        <input class="form-control" onchange="getCart()" id="item-' + v.id + '" type="number" value="' + sl_mua + '">\n' +
                     '    </div>\n' +
                     '    <div class="col-md-3">\n' +
                     '        <p class="text-danger">' + _money((v.gia * sl_mua) + "") + 'đ</p>\n' +
@@ -178,51 +180,48 @@
                     }
 
                     function orderr() {
-                        console.log(obj);
-                        // const name = $('input[name="name"]').val();
-                        // if (inputNull(name, 'Họ & tên')) {
-                        //     return;
-                        // }
-                        // const email = $('input[name="email"]').val();
-                        // if (inputNull(email, 'Email')) {
-                        //     return;
-                        // }
-                        // const phone = $('input[name="phone"]').val();
-                        // if (inputNull(phone, 'Điện thoại')) {
-                        //     return;
-                        // }
-                        // const address = $('input[name="address"]').val();
-                        // if (inputNull(address, 'Địa chỉ')) {
-                        //     return;
-                        // }
-                        // const number = $('input[name="number"]').val();
-                        // if (inputNull(address, 'Số lượng mua')) {
-                        //     return;
-                        // }
-                        // if (number < 1) {
-                        //     alert('Bạn chưa nhập số lượng!');
-                        //     return;
-                        // }
-                        // $.ajaxSetup({
-                        //     headers: {
-                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        //     }
-                        // });
-                        // $.post('/order', {
-                        //     san_pham_id: id,
-                        //     ten_kh: name,
-                        //     email: email,
-                        //     dien_thoai: phone,
-                        //     dia_chi: address,
-                        //     sl_mua: number
-                        // }, function (data) {
-                        //     if (data == 1) {
-                        //         alert("Đặt hàng thành công, vui lòng chờ điện thoại xác nhận!");
-                        //         $('#exampleModalCenter').modal('hide');
-                        //     } else {
-                        //         alert("Đặt hàng thất bại, vui lòng thử lại!");
-                        //     }
-                        // });
+                        if (ttien === 0 && obj.length <= 0) {
+                            alert("Giỏ hàng trống, vui lòng chọn sản phẩm!");
+                            return;
+                        }
+                        const name = $('input[name="_name"]').val();
+                        if (inputNull(name, 'Họ & tên')) {
+                            return;
+                        }
+                        const email = $('input[name="_email"]').val();
+                        if (inputNull(email, 'Email')) {
+                            return;
+                        }
+                        const phone = $('input[name="_phone"]').val();
+                        if (inputNull(phone, 'Điện thoại')) {
+                            return;
+                        }
+                        const address = $('input[name="_address"]').val();
+                        if (inputNull(address, 'Địa chỉ')) {
+                            return;
+                        }
+
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        $.post('/orderCart', {
+                            ten_kh: name,
+                            email: email,
+                            dien_thoai: phone,
+                            dia_chi: address,
+                            san_pham: obj,
+                            tong_tien: ttien
+                        }, function (data) {
+                            console.log(data);
+                            if (data == 1) {
+                                alert("Đặt hàng thành công, vui lòng chờ điện thoại xác nhận!");
+                                $('#exampleModalCenter').modal('hide');
+                            } else {
+                                alert("Đặt hàng thất bại, vui lòng thử lại!");
+                            }
+                        });
                     }
                 </script>
                 <style>

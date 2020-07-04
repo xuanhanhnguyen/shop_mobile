@@ -18,10 +18,10 @@
             <div class="row border">
                 @foreach($san_pham as $val)
                     <div class="col-12 col-md-3 py-4">
-                        <a href="/detail/{{$val->id}}">
+                        <a href="/detail/{{$val->id}}" style="text-decoration: none">
                             <div class="experts__item">
                                 <div class="experts__item-img">
-                                    <img class="img-fluid" style="height: 280px; width: 100%"
+                                    <img class="img-fluid" style="height: 150px;width: 100%;padding: 0 50px;"
                                          src="/uploads/product/{{$val->hinh_anh}}"
                                          alt="">
                                 </div>
@@ -41,23 +41,29 @@
                                                 <i class="fa fa-youtube" aria-hidden="true"></i>
                                             </li>
                                         </ul>
-                                        <div class="experts__item-user text-center">
-                                            <span class="experts__item-user-name text-center">{{$val->ten_sp}}</span>
-                                            @for($i = 0; $i < $val->sao; $i++)
-                                                <i class="fa fa-star text-warning" aria-hidden="true"></i>
-
-                                            @endfor
-                                            @for($i = 0; $i < (5-$val->sao); $i++)
-                                                <i class="far fa-star text-warning"></i>
-                                            @endfor
-                                            <span class="experts__item-user-job text-center">$ - {{_manny($val->gia)}}
-                                                VNĐ <i class="text-danger">-{{$val->sale}}%</i></span>
-                                            <span class="experts__item-user-job">{{$val->mota}}</span>
-                                        </div>
                                     </div>
                                     <span class="experts__plus square-canvas">
                                         <i class="fa fa-plus" aria-hidden="true"></i>
                                     </span>
+                                </div>
+                                <div class="text-center">
+                                    <p class="experts__item-user-name text-center">{{$val->ten_sp}}</p>
+                                    @for($i = 0; $i < $val->sao; $i++)
+                                        <i class="fa fa-star text-warning" aria-hidden="true"></i>
+                                    @endfor
+                                    @for($i = 0; $i < (5-$val->sao); $i++)
+                                        <i class="far fa-star text-warning"></i>
+                                    @endfor
+                                    @if($val->sale > 0)
+                                        <p class="experts__item-user-job text-center" style="margin: 0">
+                                            $ <strike> {{_manny($val->gia)}}</strike>
+                                            đ <i class="text-danger">-{{$val->sale}}%</i></p>
+                                        <p class="experts__item-user-job">$ {{_manny(($val->gia - $val->gia*2/100)."")}}
+                                            đ</p>
+                                    @else
+                                        <p class="experts__item-user-job text-center">
+                                            $ {{_manny($val->gia)}} đ</p>
+                                    @endif
                                 </div>
                             </div>
                         </a>
