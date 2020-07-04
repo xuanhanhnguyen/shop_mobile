@@ -33,7 +33,7 @@
                class="table table-hover table-striped table-bordered border text-center">
             <thead>
             <tr class="bg-primary">
-                <th>Mã khách hàng</th>
+                <th>Mã {{$id ==1 ? 'khách hàng':'nhà cung cấp'}}</th>
                 <th>Tên {{$id ==1 ? 'khách hàng':'nhà cung cấp'}}</th>
                 <th>Email</th>
                 <th>Điện thoại</th>
