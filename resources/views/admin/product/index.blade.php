@@ -35,7 +35,7 @@
                class="table table-hover table-striped table-bordered border text-center">
             <thead>
             <tr class="bg-primary">
-                <th>STT</th>
+                <th>Mã sản phẩm</th>
                 <th>Tên sản phẩm</th>
                 <th style="width: 100px">Hình ảnh</th>
                 <th>Thông tin</th>
@@ -51,7 +51,7 @@
             <tbody>
             @foreach($cat['san_pham'] as $key=>$val)
                 <tr>
-                    <td>{{$key+1}}</td>
+                    <td>{{$val->id}}</td>
                     <td>{{$val->ten_sp}}</td>
                     <td>
                         <img class="w-100" src="/uploads/product/{{$val->hinh_anh}}" alt="Ảnh">

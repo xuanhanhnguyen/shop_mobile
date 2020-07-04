@@ -33,7 +33,7 @@
                class="table table-hover table-striped table-bordered border text-center">
             <thead>
             <tr class="bg-primary">
-                <th>STT</th>
+                <th>Mã nhân viên</th>
                 <th>Họ & tên</th>
                 <th>Ngày sinh</th>
                 <th>Điện thoại</th>
