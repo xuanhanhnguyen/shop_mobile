@@ -275,6 +275,11 @@ return [
             'url' => '/admin/news'
         ],
         [
+            'text' => 'Quản lý bảo hành',
+            'icon' => 'far fa-newspaper',
+            'url' => '/admin/bh'
+        ],
+        [
             'text' => 'Quản lý nhân viên',
             'icon' => 'fas fa-users-cog',
             'url' => '/admin/nv'

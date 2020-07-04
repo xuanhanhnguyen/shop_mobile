@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
       Quản lý hệ thống
       ========================================================
     */
+    Route::resource('bh', 'BaoHanhController');
     Route::resource('cat', 'CatController');
     Route::resource('nv', 'NhanVienController');
     Route::resource('news', 'NewController');
