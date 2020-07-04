@@ -33,7 +33,7 @@
                class="table table-hover table-striped table-bordered border text-center">
             <thead>
             <tr class="bg-primary">
-                <th>STT</th>
+                <th>Mã khách hàng</th>
                 <th>Tên {{$id ==1 ? 'khách hàng':'nhà cung cấp'}}</th>
                 <th>Email</th>
                 <th>Điện thoại</th>
@@ -49,7 +49,7 @@
             <tbody>
             @foreach($member as $key=>$val)
                 <tr>
-                    <td>{{$key+1}}</td>
+                    <td>{{$id ==1 ? 'KH00':'NCC0'}}{{$val->id}}</td>
                     <td>
                         {{$val->ten_kh}}
                     </td>
