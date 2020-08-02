@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
     Route::get('/chart', 'DashboardController@show');
     Route::get('/profile', 'UserController@index');
     Route::post('/profile', 'UserController@update');
+    Route::get('/tk', 'DashboardController@thong_ke');
 
     /*========================================================
       Quản lý hệ thống

@@ -41,7 +41,7 @@
     <div class="container d-flex justify-content-between align-items-center">
         <div class="nav__logo">
             <a href="/" class="text-light nav__logo-link">
-                <h1><i class="fa fa-mobile text-success" aria-hidden="true"></i> Shop Mobile</h1>
+                <img src="./images/logo.png" alt="ảnh">
             </a>
         </div>
         <div class="nav__icon-bar">
@@ -218,6 +218,8 @@
                             if (data == 1) {
                                 alert("Đặt hàng thành công, vui lòng chờ điện thoại xác nhận!");
                                 $('#exampleModalCenter').modal('hide');
+                            }else if(data == 0){
+                                alert("Số lượng sản phẩm không đủ!");
                             } else {
                                 alert("Đặt hàng thất bại, vui lòng thử lại!");
                             }
@@ -240,7 +242,7 @@
     </div>
 </div>
 <style>
-    p {
+    p, a {
         font-size: 15px !important;
     }
 </style>
@@ -252,7 +254,7 @@
             <div class="col-10 mx-auto text-center">
                 <div class="header__content">
                     <h2 class="header__heading  heading-hero">
-                        Welcome to shop mobile
+                        Welcome to Đức Huy Moblie
                     </h2>
                     <p class="header__desc desc desc-white">
                         Chào mừng bạn đến với website của chúng tôi, hay thử trải nghiệm nó nhé!
@@ -290,13 +292,25 @@
             </div>
         </div>
     </section>
+
+    <section>
+        <div class="container">
+            <ul class="list-unstyled d-flex align-content-center justify-content-around ">
+                <li><a class="text-primary" href="?manny=1">Dưới 2 triệu</a></li>
+                <li><a class="text-primary" href="?manny=2">Từ 2 - 4 triệu</a></li>
+                <li><a class="text-primary" href="?manny=3">Từ 4 - 7 triệu</a></li>
+                <li><a class="text-primary" href="?manny=4">Từ 7 - 13 triệu</a></li>
+                <li><a class="text-primary" href="?manny=5">Trên 13 triệu</a></li>
+            </ul>
+        </div>
+    </section>
     @yield('content')
 </main>
 <!-- FOOTER  -->
 <footer class="footer p-0">
     <div class="copyright m-0">
-        <p><i class="fas fa-map-marker-alt"></i> Số 100, Đường Nguyễn Văn Cừ, Phường Hưng Phúc, TP.Vinh </p>
-        <p><i class="fas fa-phone-volume"></i> 0383979797</p>
+        <p><i class="fas fa-map-marker-alt"></i> 187A Đường 3/2, Phường 11, Quận 10, TP.HCM</p>
+        <p><i class="fas fa-phone-volume"></i> 0962.85.85.85 - <i class="fas fa-phone-volume"></i> 0963.48.48.48</p>
         <div class="footer__item m-0">
             <div class="footer__item-head">
                 <ul class="footer__list-social d-flex justify-content-around">
@@ -338,6 +352,11 @@
             $('#sign-in').hide();
             $('#sign-new').show();
         })
+        var url = window.location.href;
+        if (url != "http://localhost:8000/") {
+            $("html, body").animate({scrollTop: $('main').offset().top}, 1000);
+        }
+
     });
 </script>
 </body>

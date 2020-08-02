@@ -21,6 +21,26 @@ class PageController extends Controller
             if (isset(\request()->cat)) {
                 $san_pham = san_pham::where('trang_thai', 1)->where('loai_id', \request()->cat)->paginate(12);
             }
+        } else if (isset(\request()->manny)) {
+            switch (\request()->manny) {
+                case 1:
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '<', 2000)->paginate(12);
+                    break;
+                case 2:
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>=', 2000)->where('gia', '<=', 4000)->paginate(12);
+                    break;
+                case 3:
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>=', 4000)->where('gia', '<=', 7000)->paginate(12);
+                    break;
+                case 4:
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>=', 7000)->where('gia', '<=', 13000)->paginate(12);
+                    break;
+                case 5:
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>', 13000)->paginate(12);
+                    break;
+                default:
+                    $san_pham = san_pham::where('trang_thai', 1)->paginate(12);
+            }
         } else {
             $san_pham = san_pham::where('trang_thai', 1)->paginate(12);
         }
@@ -40,12 +60,19 @@ class PageController extends Controller
 
     public function order(Request $request)
     {
+        $sp = san_pham::find($request->san_pham_id);
+        if($sp->so_luong - $request->sl_mua < 0){
+            return 0;
+        }
+        $sp->update(['so_luong' => $sp->so_luong - $request->sl_mua]);
+
         $kh = khach_hang::updateOrCreate(['ten_kh' => $request->ten_kh, 'email' => $request->email, 'dien_thoai' => $request->dien_thoai], ['dia_chi' => $request->dia_chi]);
         $hd = hoa_don::create([
             'khach_hang_id' => $kh->id,
             'tong_tien' => $request->sl_mua * san_pham::find($request->san_pham_id)->gia,
             'create_by' => Auth::user()->id
         ]);
+
         cthd::create([
             'hoa_don_id' => $hd->id,
             'san_pham_id' => $request->san_pham_id,
@@ -73,6 +100,13 @@ class PageController extends Controller
 
     public function orderCart(Request $request)
     {
+        foreach ($request->san_pham as $item) {
+            $sp = san_pham::find($item['id']);
+            if($sp->so_luong - $item['sl_mua'] < 0){
+                return 0;
+            }
+            $sp->update(['so_luong' => $sp->so_luong - $item['sl_mua']]);
+        }
         $kh = khach_hang::updateOrCreate(['ten_kh' => $request->ten_kh, 'email' => $request->email, 'dien_thoai' => $request->dien_thoai], ['dia_chi' => $request->dia_chi]);
         $hd = hoa_don::create([
             'khach_hang_id' => $kh->id,

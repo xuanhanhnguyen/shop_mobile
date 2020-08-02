@@ -57,4 +57,8 @@ class DashboardController extends Controller
 
         return response()->json(compact('value', 'day', 'mon'));
     }
+
+    public function thong_ke(){
+        return view('admin.dashboard');
+    }
 }

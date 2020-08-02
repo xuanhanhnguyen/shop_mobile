@@ -225,7 +225,7 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'Tài khoản'],
+        ['header' => 'Quản lý tài khoản'],
         [
             'text' => 'Đổi mật khẩu?',
             'url' => 'admin/user/0/edit',
@@ -239,50 +239,60 @@ return [
 
         ['header' => 'Quản lý hệ thống'],
         [
-            'text' => 'Quản lý sản phẩm',
-            'icon' => 'fas fa-laptop-house',
-            'url' => '/admin/cat'
-        ],
-        [
-            'text' => 'Quản lý đơn hàng',
-            'icon' => 'far fa-newspaper',
-            'url' => '/admin/order'
-        ],
-        [
-            'text' => 'Nhập kho',
-            'icon' => 'far fa-paper-plane',
-            'url' => '/admin/store'
-        ],
-        [
-            'text' => 'Đối tác',
+            'text' => 'Quản lý danh mục',
             'icon' => 'fas fa-money-check-alt',
             'submenu' => [
                 [
-                    'text' => 'Danh sách khách hàng',
-                    'url' => 'admin/member/1',
+                    'text' => 'Nhà cung cấp',
+                    'url' => 'admin/member/0',
                     'icon_color' => 'red'
                 ],
                 [
-                    'text' => 'Danh sách nhà cung cấp',
-                    'url' => 'admin/member/0',
+                    'text' => 'Sản phẩm',
+                    'url' => 'admin/cat',
+                    'icon_color' => 'red'
+                ],
+                [
+                    'text' => 'Nhân viên',
+                    'url' => 'admin/nv',
+                    'icon_color' => 'red'
+                ],
+                [
+                    'text' => 'Khách hàng',
+                    'url' => 'admin/member/1',
+                    'icon_color' => 'red'
+                ]
+            ],
+        ],[
+            'text' => 'Quản lý bán hàng',
+            'icon' => 'fas fa-money-check-alt',
+            'submenu' => [
+                [
+                    'text' => 'Đơn hàng',
+                    'url' => 'admin/order',
+                    'icon_color' => 'red'
+                ],
+                [
+                    'text' => 'Bảo hành',
+                    'url' => 'admin/bh',
                     'icon_color' => 'red'
                 ]
             ],
         ],
         [
+            'text' => 'Quản lý kho',
+            'icon' => 'fas fa-money-check-alt',
+            'url' => '/admin/store'
+        ],
+        [
+            'text' => 'Báo cáo thống kê',
+            'icon' => 'fas fa-money-check-alt',
+            'url' => '/admin/tk'
+        ],
+        [
             'text' => 'Quản lý tin tức',
-            'icon' => 'far fa-newspaper',
+            'icon' => 'fas fa-money-check-alt',
             'url' => '/admin/news'
-        ],
-        [
-            'text' => 'Quản lý bảo hành',
-            'icon' => 'far fa-newspaper',
-            'url' => '/admin/bh'
-        ],
-        [
-            'text' => 'Quản lý nhân viên',
-            'icon' => 'fas fa-users-cog',
-            'url' => '/admin/nv'
         ]
     ],
 

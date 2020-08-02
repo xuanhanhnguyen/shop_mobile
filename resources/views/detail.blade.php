@@ -115,7 +115,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h3 class="text-center text-info">HÓA ĐƠN</h3>
+                    <h3 class="text-center text-info">ĐƠN HÀNG</h3>
                     <hr class="w-100">
                     <div class="form-group m-0">
                         <label for="title">Họ & tên:</label>
@@ -144,7 +144,7 @@
                         <button id="book"
                                 class="btn btn-outline-primary"
                                 onclick="order({{$data->id}})">
-                            Đặt ngay
+                            Đặt hàng
                         </button>
                     </div>
 
@@ -198,6 +198,8 @@
                                 if (data == 1) {
                                     alert("Đặt hàng thành công, vui lòng chờ điện thoại xác nhận!");
                                     $('#exampleModalCenter').modal('hide');
+                                } else if (data == 0) {
+                                    alert("Số lượng sản phẩm không đủ!");
                                 } else {
                                     alert("Đặt hàng thất bại, vui lòng thử lại!");
                                 }
