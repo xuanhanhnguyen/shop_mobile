@@ -4,7 +4,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h5>Danh mục loại sản phẩm</h5>
+    <h5>Loại sản phẩm</h5>
 @stop
 
 @section('content')

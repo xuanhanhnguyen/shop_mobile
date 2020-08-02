@@ -6,7 +6,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Thư mục: <a href="#" onclick="window.history.back();" class="text-info">{{$cat->ten_loai}}</a></h1>
+    <h1>Sản phẩm: <a href="#" onclick="window.history.back();" class="text-info">{{$cat->ten_loai}}</a></h1>
 @stop
 
 @section('content')
@@ -39,6 +39,7 @@
                 <th>Tên sản phẩm</th>
                 <th style="width: 100px">Hình ảnh</th>
                 <th>Thông tin</th>
+                <th>Thêm ảnh</th>
                 <th>Thành tiền</th>
                 <th>Trạng thái</th>
                 <th>
@@ -49,16 +50,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($cat['san_pham'] as $key=>$val)
+            @foreach($sp as $key=>$val)
                 <tr>
                     <td>{{$val->id}}</td>
                     <td>{{$val->ten_sp}}</td>
                     <td>
                         <img class="w-100" src="/uploads/product/{{$val->hinh_anh}}" alt="Ảnh">
                     </td>
-                    <td>
+                    <td class="text-left" style="min-width: 200px">
                         <p>số lương: {{$val->so_luong}}</p>
-                        <p>Đơn giá: {{_manny($val->gia)}}VNĐ <span class="text-danger">-{{$val->sale}}%</span></p>
+                        <p>Đơn giá: {{_manny($val->gia)}}VNĐ </p>
+                        <p>Giảm giá: {{$val->sale}}%</p>
                         <p>Tiêu chuẩn:
                             @for($i = 0; $i < $val->sao; $i++)
                                 <i class="fa fa-star text-warning" aria-hidden="true"></i>
@@ -69,8 +71,29 @@
                         </p>
                     </td>
                     <td>
+                        <form id="fImg{{$val->id}}" action="/admin/img/{{$val->id}}" method="POST"
+                              enctype="multipart/form-data">
+                            @method('PUT')
+                            @csrf
+                            <input name="cat" type="text" class="d-none" value="{{$cat->id}}">
+                            <input name="img" type="file" value=""
+                                   onchange="setTimeout($('#fImg{{$val->id}}').submit(), 500)" style="width: 80px"
+                                   required>
+                        </form>
+                        <div>
+                            @foreach($val->images as $img)
+                                <form id="img{{$img->id}}" action="/admin/img/{{$img->id}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <img style="width: 50px;height: 50px; cursor: pointer" onclick="$('#img{{$img->id}}').submit()" src="/uploads/product/{{$img->ten}}" alt="ảnh">
+                                </form>
+                            @endforeach
+                        </div>
+                    </td>
+                    <td>
                         {{_manny(($val->gia - $val->gia * $val->sale / 100)."")}}VNĐ
                     </td>
+
                     <td>
                         <form action="{{$val->id}}" method="POST">
                             @method('PUT')

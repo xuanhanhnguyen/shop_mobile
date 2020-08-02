@@ -10,4 +10,8 @@ class san_pham extends Model
     protected $table = "san_pham";
     protected $fillable = ['ten_sp','loai_id', 'so_luong','sao', 'gia', 'sale', 'hinh_anh', 'mo_ta', 'thong_so', 'trang_thai'];
     public $timestamps = true;
+
+    public function images(){
+        return $this->hasMany(hinh_anh::class, 'sp_id', 'id');
+    }
 }

@@ -67,8 +67,10 @@ class ProductController extends Controller
     public function show($id)
     {
         //
-        $cat = loai_sp::with('san_pham')->find($id);
-        return view('admin.product.index', compact('cat'));
+        $cat = loai_sp::find($id);
+        $sp = san_pham::with('images')->where('loai_id', $id)->get();
+
+        return view('admin.product.index', compact('cat', 'sp'));
     }
 
     /**

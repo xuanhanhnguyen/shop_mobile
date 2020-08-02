@@ -166,7 +166,7 @@
                 <div class="col-12 text-center mt-3">
                     <button id="book" onclick="orderr()"
                             class="btn btn-outline-danger">
-                        Thanh toán
+                        Đặt hàng
                     </button>
                 </div>
 

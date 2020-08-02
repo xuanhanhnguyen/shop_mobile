@@ -24,19 +24,19 @@ class PageController extends Controller
         } else if (isset(\request()->manny)) {
             switch (\request()->manny) {
                 case 1:
-                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '<', 2000)->paginate(12);
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '<', 2000000)->paginate(12);
                     break;
                 case 2:
-                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>=', 2000)->where('gia', '<=', 4000)->paginate(12);
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>=', 2000000)->where('gia', '<=', 4000000)->paginate(12);
                     break;
                 case 3:
-                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>=', 4000)->where('gia', '<=', 7000)->paginate(12);
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>=', 4000000)->where('gia', '<=', 7000000)->paginate(12);
                     break;
                 case 4:
-                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>=', 7000)->where('gia', '<=', 13000)->paginate(12);
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>=', 7000000)->where('gia', '<=', 13000000)->paginate(12);
                     break;
                 case 5:
-                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>', 13000)->paginate(12);
+                    $san_pham = san_pham::where('trang_thai', 1)->where('gia', '>', 13000000)->paginate(12);
                     break;
                 default:
                     $san_pham = san_pham::where('trang_thai', 1)->paginate(12);
@@ -51,7 +51,7 @@ class PageController extends Controller
 
     public function detail($id)
     {
-        $data = san_pham::find($id);
+        $data = san_pham::with('images')->find($id);
         $data->thong_so = explode(';', $data->thong_so);
         $cat = loai_sp::all();
         return view('detail', compact('data', 'cat'));

@@ -102,6 +102,13 @@
                 </div>
                 <div class="col-md-4">
                     <img class="w-100" src="/uploads/product/{{$data->hinh_anh}}" alt="">
+                    <div class="slider-img">
+                        @foreach($data->images as $img)
+                            <a target="_blank" href="/uploads/product/{{$img->ten}}">
+                                <img style="width: 100px; height: 100px" src="/uploads/product/{{$img->ten}}" alt="ảnh">
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="col-md-12">
                     <hr width="100%">

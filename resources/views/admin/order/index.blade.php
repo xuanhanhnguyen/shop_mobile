@@ -37,6 +37,7 @@
                 <th>Tên khách hàng</th>
                 <th>Ngày đặt</th>
                 <th>Tổng tiền</th>
+                <th>Trạng thái</th>
                 <th>
                     {{--<button class="btn btn-sm btn-success" onclick="location.href = 'order/create'">+Thêm</button>--}}
                 </th>
@@ -57,6 +58,23 @@
                         <span style="color: silver">{{$val->user ? $val->user->name: ''}}</span>
                     </td>
                     <td style="min-width: 100px">{{_manny($val->tong_tien)}}đ</td>
+                    <td>
+                        <form action="/admin/order/{{$val->id}}" method="post">
+                            @method('put')
+                            @csrf
+                            @if($val->trang_thai == 0)
+                                <p class="text-info">Đơn hàng mới</p>
+                                <input type="text" name="trang_thai" value="1" class="d-none">
+                                <button class="badge badge-info" >Xuất hóa đơn</button>
+                            @elseif($val->trang_thai == 1)
+                                <p class="text-danger">Đã xuất hóa đơn</p>
+                                <input type="text" name="trang_thai" value="2" class="d-none">
+                                <button class="badge badge-success" >Đã thanh toán</button>
+                            @else
+                                <p class="text-success">Đã thanh toán</p>
+                            @endif
+                        </form>
+                    </td>
                     <td>
                         <button class="btn btn-sm btn-info"
                                 onclick="location.href = 'order-detail/{{$val->id}}'">Xem

@@ -59,4 +59,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
     Route::resource('service', 'ServiceController');
     Route::resource('book', 'BookController');
     Route::resource('user', 'UserController');
+    Route::resource('img', 'HinhAnhController');
 });

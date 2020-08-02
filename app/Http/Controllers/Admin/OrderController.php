@@ -23,7 +23,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = hoa_don::with('khach_hang', 'user' )->get();
+        $order = hoa_don::with('khach_hang', 'user')->get();
         return view('admin.order.index', compact('order'));
     }
 
@@ -93,6 +93,10 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if (isset($request->trang_thai)) {
+            hoa_don::find($id)->update(["trang_thai" => $request->trang_thai]);
+            return redirect('admin/order')->with("message", "Cập nhật thành công !");
+        }
         $hd = hoa_don::find($id);
         $sp = san_pham::find($request->san_pham_id);
         if ($sp->so_luong + $hd->sl_mua - $request->sl_mua < 0) {
