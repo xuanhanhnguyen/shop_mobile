@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\bao_hanh;
+use App\cthd;
 use App\hoa_don;
 use App\san_pham;
 use Illuminate\Http\Request;
@@ -80,7 +81,8 @@ class BaoHanhController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = cthd::with('san_pham')->where('hoa_don_id', $id)->get();
+        return response()->json($data);
     }
 
     /**
