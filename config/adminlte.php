@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Đức Huy',
+    'title' => 'Phan Anh',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<img src="/images/logo.png"/>',
+    'logo' => 'Phan Anh',
     'logo_img' => false,
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,

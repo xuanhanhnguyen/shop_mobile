@@ -41,7 +41,8 @@
     <div class="container d-flex justify-content-between align-items-center">
         <div class="nav__logo">
             <a href="/" class="text-light nav__logo-link">
-                <img src="./images/logo.png" alt="ảnh">
+                Phan Anh
+                {{-- <img src="./images/logo.png" alt="ảnh"> --}}
             </a>
         </div>
         <div class="nav__icon-bar">
@@ -254,7 +255,7 @@
             <div class="col-10 mx-auto text-center">
                 <div class="header__content">
                     <h2 class="header__heading  heading-hero">
-                        Welcome to Đức Huy Moblie
+                        Welcome to Phan Anh Moblie
                     </h2>
                     <p class="header__desc desc desc-white">
                         Chào mừng bạn đến với website của chúng tôi, hay thử trải nghiệm nó nhé!
