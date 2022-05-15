@@ -37,9 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function position()
+    public function posts()
     {
-        return $this->belongsTo('App\Models\Position', 'vi_tri_id');
+        return $this->hasMany(\App\tin_tuc::class, "user_id", "id");
     }
 }

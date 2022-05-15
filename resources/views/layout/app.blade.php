@@ -352,8 +352,8 @@
             $('#sign-in').hide();
             $('#sign-new').show();
         })
-        var url = window.location.href;
-        if (url != "http://localhost:8000/") {
+        var url = location.href;
+        if (url != "http://localhost:8000" && url != "http://localhost:8000/" && url != "http://shop-mobile.me/") {
             $("html, body").animate({scrollTop: $('main').offset().top}, 1000);
         }
 

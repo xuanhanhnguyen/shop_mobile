@@ -149,8 +149,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::with('post')->findOrFail($id);
-        if (sizeof($user->post) == 0) {
+        $user = User::with('posts')->findOrFail($id);
+        if (sizeof($user->posts) == 0) {
             User::findOrFail($id)->delete();
             return redirect('admin/user')->with("message", "Xóa nhân viên thành công !");
         } else {
